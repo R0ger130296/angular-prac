@@ -1,0 +1,262 @@
+/* General Styles */
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f3f4f6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Header outside the container */
+.header-outside {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  width: 100%;
+}
+
+.header-title {
+  margin: 0;
+  font-size: 28px;
+  font-weight: bold;
+  display: flex;
+}
+
+.icon {
+  font-size: 36px;
+  margin-right: 10px;
+}
+
+/* Container */
+.container {
+  background-color: #e2e8f0;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 900px;
+  width: 100%;
+  box-shadow: 0 4px 10px rgba(121, 115, 115, 0.1);
+}
+
+/* Search and Add Button */
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.search-input {
+  flex-grow: 1;
+  max-width: 250px;
+  margin-right: 10px;
+  padding: 10px;
+  border: 1px solid #e9ecee;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.add-product-btn {
+  background-color: #ffd700;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.add-product-btn:hover {
+  background-color: #ffc61c;
+}
+
+/* Table Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 12px;
+  margin: 0 auto 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(228, 224, 224, 0.1);
+}
+
+thead {
+  background-color: #e2e8f083;
+  color: black;
+}
+
+thead th {
+  padding: 15px;
+  text-align: left;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+tbody tr {
+  border-bottom: 1px solid #e2e8f0;
+  transition: background-color 0.2s;
+}
+
+tbody tr:hover {
+  background-color: #f7fafc;
+}
+
+td {
+  padding: 15px;
+  vertical-align: middle;
+  font-size: 14px;
+}
+
+.product-logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Button Styles */
+.edit-btn,
+.delete-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+/* Modal Styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 40px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 450px;
+  box-shadow: 0 8px 16px rgba(131, 129, 129, 0.2);
+  text-align: center;
+}
+
+.modal h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.modal-buttons button {
+  margin: 10px 5px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.modal-buttons button:first-child {
+  background-color: #ccd7e6;
+  color: white;
+}
+
+.modal-buttons button:first-child:hover {
+  background-color: #ccd7e6d7;
+}
+
+.modal-buttons button:last-child {
+  background-color: #ffd700;
+  color: white;
+}
+
+.modal-buttons button:last-child:hover {
+  background-color: #ffd900da;
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  background-color: #c0bebe;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .search-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-input {
+    margin-bottom: 10px;
+    margin-right: 0;
+  }
+
+  .add-product-btn {
+    width: 100%;
+  }
+
+  .modal-content {
+    width: 90%;
+  }
+}
+
+/* Spinner Container */
+.spinner-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+/* Spinner */
+.spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+/* Keyframe for spinning animation */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

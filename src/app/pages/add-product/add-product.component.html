@@ -1,0 +1,77 @@
+<div class="header-outside">
+  <span class="icon">🏦</span>
+  <h1 class="header-title">BANCO</h1>
+</div>
+
+<form [formGroup]="addProductForm" (ngSubmit)="onSubmit()">
+  <h2>Formulario de Registro</h2>
+  <hr />
+  <div class="form-row">
+    <div class="form-column">
+      <div>
+        <label for="id">ID</label>
+        <input id="id" formControlName="id" />
+        <div *ngIf="addProductForm.get('id')?.touched && addProductForm.get('id')?.invalid" class="error-message">
+          <div *ngIf="addProductForm.get('id')?.errors?.['required']">ID es requerido.</div>
+          <div *ngIf="addProductForm.get('id')?.errors?.['minlength']">ID debe tener al menos 3 caracteres.</div>
+          <div *ngIf="addProductForm.get('id')?.errors?.['maxlength']">ID no puede exceder 10 caracteres.</div>
+          <div *ngIf="addProductForm.get('id')?.errors?.['idExists']">Este ID ya existe.</div>
+        </div>
+      </div>
+      <div>
+        <label for="description">Descripción</label>
+        <input id="description" formControlName="description" />
+        <div *ngIf="addProductForm.get('description')?.touched && addProductForm.get('description')?.invalid" class="error-message">
+          <div *ngIf="addProductForm.get('description')?.errors?.['required']">Descripción es requerida.</div>
+          <div *ngIf="addProductForm.get('description')?.errors?.['minlength']">Descripción debe tener al menos 10 caracteres.</div>
+          <div *ngIf="addProductForm.get('description')?.errors?.['maxlength']">Descripción no puede exceder 200 caracteres.</div>
+        </div>
+      </div>
+      <div>
+        <label for="date_release">Fecha de Lanzamiento</label>
+        <input id="date_release" formControlName="date_release" type="date" />
+        <div *ngIf="addProductForm.get('date_release')?.touched && addProductForm.get('date_release')?.invalid" class="error-message">
+          <div *ngIf="addProductForm.get('date_release')?.errors?.['required']">Fecha de lanzamiento es requerida.</div>
+          <div *ngIf="addProductForm.get('date_release')?.errors?.['pattern']">Fecha de lanzamiento debe tener el formato YYYY-MM-DD.</div>
+        </div>
+      </div>
+    </div>
+    <div class="form-column">
+      <div>
+        <label for="name">Nombre</label>
+        <input id="name" formControlName="name" />
+        <div *ngIf="addProductForm.get('name')?.touched && addProductForm.get('name')?.invalid" class="error-message">
+          <div *ngIf="addProductForm.get('name')?.errors?.['required']">Nombre es requerido.</div>
+          <div *ngIf="addProductForm.get('name')?.errors?.['minlength']">Nombre debe tener al menos 5 caracteres.</div>
+          <div *ngIf="addProductForm.get('name')?.errors?.['maxlength']">Nombre no puede exceder 100 caracteres.</div>
+        </div>
+      </div>
+      <div>
+        <label for="logo">Logo</label>
+        <input id="logo" formControlName="logo" />
+        <div *ngIf="addProductForm.get('logo')?.touched && addProductForm.get('logo')?.invalid" class="error-message">
+          <div *ngIf="addProductForm.get('logo')?.errors?.['required']">Logo es requerido.</div>
+        </div>
+      </div>
+      <div>
+        <label for="date_revision">Fecha de Revisión</label>
+        <input
+          id="date_revision"
+          formControlName="date_revision"
+          type="date"
+          [readonly]="true"
+        />
+        <!-- Mostrar mensaje de error si la fecha de revisión no es válida -->
+        <div *ngIf="dateRevisionInvalid" class="error-message">
+          La fecha de revisión debe ser exactamente un año posterior a la fecha de liberación.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="button-container">
+    <button type="reset" *ngIf="!product" (click)="resetForm()">
+      Reiniciar
+    </button>
+    <button type="submit">Enviar</button>
+  </div>
+</form>

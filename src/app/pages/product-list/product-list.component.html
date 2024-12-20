@@ -1,0 +1,104 @@
+<!-- Header outside the container -->
+<div class="header-outside">
+  <span class="icon">🏦</span>
+  <h1 class="header-title">BANCO</h1>
+</div>
+
+<div class="container">
+  <!-- Search and Add button -->
+  <div class="search-container">
+    <input
+      type="text"
+      [(ngModel)]="searchTerm"
+      (ngModelChange)="filterProducts()"
+      placeholder="Buscar"
+      class="search-input"
+    />
+    <button (click)="goToProductDetail()" class="add-product-btn">
+      Agregar
+    </button>
+  </div>
+
+  <!-- Products Table -->
+  <div *ngIf="products?.length; else noProducts">
+    <table>
+      <thead>
+        <tr>
+          <th>Logo</th>
+          <th>Nombre del Producto</th>
+          <th>Descripción</th>
+          <th>Fecha de Liberación</th>
+          <th>Fecha de Reestructuración</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Spinner shown only when loading products -->
+        <tr *ngIf="isLoading">
+          <td class="spinner-container">
+            <div class="spinner"></div>
+          </td>
+        </tr>
+
+        <!-- List of products -->
+        <tr *ngFor="let product of filteredProducts">
+          <td>
+            <img
+              [src]="product.logo"
+              [alt]="'Logo de ' + product.name"
+              class="product-logo"
+            />
+          </td>
+          <td>{{ product.name }}</td>
+          <td>{{ product.description }}</td>
+          <td>{{ product.date_release }}</td>
+          <td>{{ product.date_revision }}</td>
+          <td>
+            <app-action-menu
+              [product]="product"
+              (editProduct)="goToProductDetail($event)"
+              (deleteProduct)="confirmDeleteProduct(product)"
+            >
+            </app-action-menu>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Number of records -->
+    <div>
+      <p>{{ filteredProducts.length }} Resultados</p>
+    </div>
+  </div>
+
+  <!-- No products template -->
+  <ng-template #noProducts>
+    <p
+      style="
+        color: red;
+        text-align: center;
+        margin: 0;
+        padding: 20px;
+        font-size: 16px;
+      "
+    >
+      No se encontraron productos.
+    </p>
+  </ng-template>
+
+  <!-- Modal for confirming deletion -->
+  <div *ngIf="isModalVisible" class="modal">
+    <div class="modal-content">
+      <h3>
+        ¿Estás seguro de que deseas eliminar el producto "{{
+          productToDelete?.name
+        }}"?
+      </h3>
+      <p class="line"></p>
+      <div class="modal-buttons">
+        <button (click)="closeModal()">Cancelar</button>
+        <button (click)="confirmDelete()">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
