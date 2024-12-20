@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductDTO } from '../../models/product.dto';
-import { ProductService } from '../../services/services';
+import { ProductService } from '../../services/product.services';
 import { ProductListResponse } from '../../interfaces/product.interface';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';

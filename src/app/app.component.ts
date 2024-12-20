@@ -3,8 +3,8 @@ import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  standalone: true, // Marca este componente como autónomo
-  imports: [RouterOutlet], // Especifica dependencias necesarias, como RouterOutlet para enrutamiento
+  standalone: true,
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })

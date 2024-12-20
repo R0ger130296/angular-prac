@@ -11,7 +11,7 @@ import {
   AsyncValidatorFn,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ProductService } from '../../services/services';
+import { ProductService } from '../../services/product.services';
 import { ProductDTO } from '../../models/product.dto';
 import { lastValueFrom, Observable, of } from 'rxjs';
 import { catchError, debounceTime, switchMap } from 'rxjs/operators';
