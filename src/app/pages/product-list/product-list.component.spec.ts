@@ -45,7 +45,7 @@ describe('ProductListComponent', () => {
         MatIconModule,
         MatMenuModule,
         CommonModule,
-        ProductListComponent, // Ensure this is in the imports array, not declarations
+        ProductListComponent,
       ],
       providers: [
         { provide: ProductService, useValue: mockProductService },
