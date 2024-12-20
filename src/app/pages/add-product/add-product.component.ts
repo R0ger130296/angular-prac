@@ -9,6 +9,7 @@ import {
   ValidationErrors,
   FormBuilder,
   AsyncValidatorFn,
+  ValidatorFn,
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProductService } from '../../services/product.services';
@@ -47,6 +48,7 @@ export class AddProductComponent implements OnInit {
           Validators.required,
           Validators.minLength(5),
           Validators.maxLength(100),
+          this.startsWithLetterValidator(),
         ]),
         description: new FormControl('', [
           Validators.required,
@@ -217,6 +219,17 @@ export class AddProductComponent implements OnInit {
         switchMap((isExist) => (isExist ? of({ idExists: true }) : of(null))),
         catchError(() => of(null))
       );
+    };
+  }
+
+  private startsWithLetterValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const value = control.value;
+
+      if (value && /^[a-zA-Z]/.test(value)) {
+        return null;
+      }
+      return { startsWithLetter: true };
     };
   }
 }
